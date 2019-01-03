@@ -650,10 +650,10 @@ function setClassAndName(type, rarity, cclass, name) {
         var classIcon = '../assets/images/frames/class/';
 
         if(rarity > 3) {
-            classIcon = classIcon.concat(cclass + "_gold.png");
+            classIcon = classIcon.concat(cclass.toLowerCase() + "_gold.png");
             classIcon = "url('" + classIcon + "')";
         } else {
-            classIcon = classIcon.concat(cclass + "_silver.png");
+            classIcon = classIcon.concat(cclass.toLowerCase() + "_silver.png");
             classIcon = "url('" + classIcon + "')";
         }
 
