@@ -245,7 +245,6 @@ function getBanner(banner) {
         {"type": "CE", "name": "Volumen Hydrargyrum", "class": "CE", "rarity": 5},
         {"type": "CE", "name": "Innocent Maiden", "class": "CE", "rarity": 4},
         {"type": "CE", "name": "Self Geass Scroll", "class": "CE", "rarity": 3},
-        {"type": "CE", "name": "Crest Worms", "class": "CE", "rarity": 3},
         {"type": "CE", "name": "Reciting the Subscription List", "class": "CE", "rarity": 3},
         {"type": "CE", "name": "All Three Together", "class": "CE", "rarity": 3},
         {"type": "CE", "name": "Bronze-Link Manipulator", "class": "CE", "rarity": 3},
