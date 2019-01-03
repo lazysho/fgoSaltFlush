@@ -1,4 +1,5 @@
 # fgoSaltFlush 0.0.1
+![fgoSaltFlush](fgoSaltFlush/screenshots/ss1.PNG)
 ## Too Salty?
 **F/GO not giving you your waifu or husbando?** Try fgoSaltFlush and flush your salt away, though not guaranteed. ~~Your salt level could be too high just like mine that no amount of fake rolls could quench it.~~ Anyway, you can use salt flush for warm up rolls, good luck charm, or if you're itching to roll but you're saving for a servant you'll never get if you're f2p.
 
