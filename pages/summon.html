@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> F/FO | Salt Flush </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+        <!-- CSS/Scripts -->
+        <link rel="stylesheet" href="../src/css/fgo.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <script type="text/javascript" src="../src/js/summon.js"></script>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300i,400" rel="stylesheet">
+    </head>
+    <body class="animated fadeInUpBig">
+        <div class="container">
+            <div class="row mt-lg-5 pt-lg-5">
+                <div class="col col-md-8 mx-auto">
+                    <!--Main Container-->
+                    <div class="w-100 card main-panel mt-1">
+                        <!--Header-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <div class="row align-items-center">
+                                <div class="col col-sm-3">
+                                    <button type="button" class="btn btn-block bg-danger text-white shadow-sm"
+                                        onclick="backToIndex()">
+                                        Back
+                                    </button>
+                                </div>
+                                <div class="col col-lg-7"></div>
+                                <div class="col col-lg-2">
+                                    <input id="rolls" type="text" class="form-control disabled text-center" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+                        <!--Body-->
+                        <div class="card-header summon-panel border-bottom-0 py-4 shadow-sm">
+                            <div class="row">
+                                <div class="col-12 col-md-10 mx-auto">
+                                    <!--Cards-->
+                                    <div class="card servant-portrait mx-auto animated"></div>
+                                    <div class="card servant-frame mx-auto animated"></div>
+                                    <div class="card servant-class mx-auto animated"></div>
+                                    <div class="card class-name mx-auto animated">Class</div>
+                                    <div class="card servant-name mx-auto animated">Servant</div>
+                                    <div class="card servant-card mx-auto animated"></div>
+
+                                    <!--Result-->
+                                    <div class="row">
+                                        <div id="thumb_1" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-1 animated"></img>
+                                            <img class="w-100 thumb-frame-1 animated"></img>
+                                            <img class="thumb-class-1 animated"></img>
+                                        </div>
+                                        <div id="thumb_2" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-2 animated"></img>
+                                            <img class="w-100 thumb-frame-2 animated"></img>
+                                            <img class="thumb-class-2 animated"></img>
+                                        </div>
+                                        <div id="thumb_3" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-3 animated"></img>
+                                            <img class="w-100 thumb-frame-3 animated"></img>
+                                            <img class="thumb-class-3 animated"></img>
+                                        </div>
+                                        <div id="thumb_4" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-4 animated"></img>
+                                            <img class="w-100 thumb-frame-4 animated"></img>
+                                            <img class="thumb-class-4 animated"></img>
+                                        </div>
+                                        <div id="thumb_5" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-5 animated"></img>
+                                            <img class="w-100 thumb-frame-5 animated"></img>
+                                            <img class="thumb-class-5 animated"></img>
+                                        </div>
+                                        <div id="thumb_6" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-6 animated"></img>
+                                            <img class="w-100 thumb-frame-6 animated"></img>
+                                            <img class="thumb-class-6 animated"></img>
+                                        </div>
+                                        <div id="thumb_7" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-7 animated"></img>
+                                            <img class="w-100 thumb-frame-7 animated"></img>
+                                            <img class="thumb-class-7 animated"></img>
+                                        </div>
+                                        <div id="thumb_8" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-8 animated"></img>
+                                            <img class="w-100 thumb-frame-8 animated"></img>
+                                            <img class="thumb-class-8 animated"></img>
+                                        </div>
+                                        <div id="thumb_9" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-9 animated"></img>
+                                            <img class="w-100 thumb-frame-9 animated"></img>
+                                            <img class="thumb-class-9 animated"></img>
+                                        </div>
+                                        <div id="thumb_10" class="col-4 col-lg-3">
+                                            <img class="w-100 thumb-portrait-10 animated"></img>
+                                            <img class="w-100 thumb-frame-10 animated"></img>
+                                            <img class="thumb-class-10 animated"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Footer-->
+                        <div class="card-footer bg-transparent">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <p id="disclaimer">Horiko borrowed everything except the program! Below are the owners of F/GO.</p>
+                                </div>
+                            </div>
+                            <div class="w-50 row mx-auto">
+                                <div class="col mb-1">
+                                    <img src="../assets/images/ui/logo/type-moon.png" class="mx-auto d-block shadow-sm" width="50">
+                                </div>
+                                <div class="col mb-1">
+                                    <img src="../assets/images/ui/logo/anniplex.png" class="mx-auto d-block shadow-sm" width="100">
+                                </div>
+                                <div class="col mb-1">
+                                    <img src="../assets/images/ui/logo/delightworks.png" class="mx-auto d-block shadow-sm" width="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

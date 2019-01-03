@@ -1,0 +1,172 @@
+
+/* SELECTOR */
+body {
+    background-color: #000;
+    background-image: url('../../assets/images/bg/BG_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+/* CLASS */
+.main-panel {
+    border: none;
+    background-color: transparent;
+}
+
+.body-panel {
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.summon-panel {
+    height: 60vh;
+    overflow-y: hidden;
+}
+
+/* SUMMON */
+.servant-portrait {
+    border: none;
+    border-radius: 1vh 1vh 1vh 1vh;
+    background-color: transparent;
+    background-image: url('../../assets/images/summon/servants/portrait/lancer/karna.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 1vh;
+    background-size: cover;
+    width: 27.5vh;
+    height: 48vh;
+    margin-top: 2vh;
+    display: none;
+}
+
+.servant-frame {
+    border: none;
+    background-color: transparent;
+    background-image: url('../../assets/images/frames/gold/card_05.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 28vh;
+    height: 48vh;
+    margin-top: -48vh;
+    display: none;
+}
+
+.servant-class {
+    border: none;
+    background-color: transparent;
+    background-image: url('../../assets/images/frames/class/saber_gold.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 4vh;
+    height: 4vh;
+    margin-top: -5.5vh;
+    display: none;
+}
+
+.class-name {
+    border: none;
+    background-color: transparent;
+    width: 28vh;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0.75px 0.75px black;
+    margin-top: -8.5vh;
+    display: none;
+}
+
+.servant-name {
+    border: none;
+    background-color: transparent;
+    width: 28vh;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8vh;
+    font-weight: bolder;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px black;
+    margin-top: -1.5vh;
+    display: none;
+}
+
+.servant-card {
+    border: none;
+    background-color: transparent;
+    background-image: url('../../assets/images/frames/gold/lancer.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 28vh;
+    height: 48vh;
+    margin-top: 2vh;
+    display: none;
+}
+
+.thumb-portrait-1, .thumb-portrait-2, .thumb-portrait-3, .thumb-portrait-4,
+.thumb-portrait-5, .thumb-portrait-6, .thumb-portrait-7, .thumb-portrait-8,
+.thumb-portrait-9, .thumb-portrait-10, {
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 14vh;
+    height: 14vh;
+    margin-bottom: 3vh;
+    display: none;
+}
+
+.thumb-frame-1, .thumb-frame-2, .thumb-frame-3, .thumb-frame-4, .thumb-frame-5,
+.thumb-frame-6, .thumb-frame-7, .thumb-frame-8, .thumb-frame-9, .thumb-frame-10 {
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 14vh;
+    height: 14vh;
+    margin-top: -15vh;
+    display: none;
+}
+
+.thumb-class-1, .thumb-class-2, .thumb-class-3, .thumb-class-4, .thumb-class-5,
+.thumb-class-6, .thumb-class-7, .thumb-class-8, .thumb-class-9, .thumb-class-10 {
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 4vh;
+    height: 4vh;
+    margin-top: -29.6vh;
+    margin-left: 0.3vh;
+    display: none;
+}
+
+/* IMAGES */
+.img-title {
+    width: 90%;
+}
+
+.img-master {
+    width: 100%;
+}
+
+.img-sq {
+    width: 100%;
+}
+
+/* FONTS */
+.garamond {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+}
+
+.negmarg {
+    margin-top: -7vh;
+}
