@@ -111,7 +111,7 @@ function resizeBtnGroup() {
 }
 
 function goToGithub() {
-    window.location.href = "https://github.com/lazysho/fgoSaltFlush";
+    window.location.href = "https://github.com/lazysho/fgoSaltFlush/blob/master/README.md";
 }
 
 // ROOT
