@@ -1,4 +1,4 @@
-# fgoSaltFlush 0.0.1
+# fgoSaltFlush
 
 ![salty](assets/images/memes/salt.jpg)
 **F/GO not giving you your waifu or husbando?** Try fgoSaltFlush and flush your salt away, though not guaranteed. ~~Your salt level could be too high just like mine that no amount of fake rolls could quench it.~~ Anyway, you can use salt flush for warm up rolls, good luck charm, or if you're itching to roll but you're saving for a servant you'll never get if you're f2p.
@@ -31,21 +31,27 @@ Since fgosSaltFlush is still on alpha stage, and *I did this for fun*, I only us
    | 4 Star | 3%      | 12%           |
    | 1 Star | 40%     | 40%           |
 
-Of course, I used the rates of summoning that F/GO provided. From what I understood, you have a **44% chance of summoning a servant** and **56% chance for craft essence**. I didn't include the **drop rates of each servant** in the calculation because I'm not really sure (???) how and where to include those rates in the program I made. I'll just figure that out later.
+Of course, I used the rates of summoning that F/GO provided. From what I understood, you have a **44% chance of summoning a servant** and **56% chance for craft essence**. I didn't include the **drop rates of each servant** in the calculation because ~~I'm not really sure (???) how and where to include those rates in the program I made. I'll just figure that out later.~~
+
+I think I have figured out how to add drop rates.
 
 ### Process
 Now, here's how fgoSaltFlush plans to flush your salt.
 1. First thing I did when I got the banner is **split the pool** into two types, **servant** and **craft essence**.
 2. We all know that if you roll for 10x, you'll have a guaranteed 4* above card. Before finding out what's the card type and rarity, **determine first the position of the guaranteed card** if rolling for 10x. This is where the system starts to rely on **RNG** or **random number generation**. 0-9 will be the range, the result will be the place of the guaranteed card.
-3. **RNG again for finding out the card's type and rarity**. I decided to **get the type first**, so the range is from 1-100. If the number generated is from **1-44** (44%), the card is a servant otherwise **45-100** (56%) its a craft essence. Do **another RNG for rarity** and see the table below to find out the equivalent rarity of numbers.
 
-   | Rarity | Servant | Craft Essence |
-   |--------|---------|---------------|
-   | 5 Star | 1       | 1-4           |
-   | 4 Star | 2-4     | 5-16          |
-   | 1 Star | 5-40    | 17-56         |
+~~3. **RNG again for finding out the card's type and rarity**. I decided to **get the type first**, so the range is from 1-100. If the number generated is from **1-44** (44%), the card is a servant otherwise **45-100** (56%) its a craft essence. Do **another RNG for rarity** and see the table below to find out the equivalent rarity of numbers.~~
+
+3. Instead of doing the RNG for type and rarity separately, I did it in one go. I also used float, then **decrement at each if condition until it reaches below zero**. On which condition it falls determine's the type and rarity. Below is the corresponding rarity per condition, the amount it decrements, then falls under it if result is < 0.
+
+   | Rarity | Servant   | Craft Essence |
+   |--------|-----------|---------------|
+   | 5 Star | 1 : -0.01 | 4 : -0.04     |
+   | 4 Star | 2 : -0.03 | 5 : -0.12     |
+   | 3 Star | 3 : -0.40 | 6 : -0.40     |
     
-4. The **entire process of step three is in a loop** by the way, which calls `rollCard(guaranty)` for the number of rolls you chose. When the counter reaches the position of the guranteed card, the variable `guaranty`,  a boolean, is set to true. When picking the rarity, this boolean is used to **shorten the range of the pool to 1-4 for servants and 1-16 for ce**.
+4. The **entire process of step three is in a loop** by the way, which calls `rollCard(guaranty)` for the number of rolls you chose. When the counter reaches the position of the guranteed card, the variable `guaranty`,  a boolean, is set to true. ~~When picking the rarity, this boolean is used to **shorten the range of the pool to 1-4 for servants and 1-16 for ce**.~~ Then conditions 3 and 6 from tables above will be excluded, making CE SR's rate 92%.
+
 5. **Next step is to pick the specific card, the spirit orgin**. The **rarity** (actual number from RNG) and **pool** (servant/ce) is passed to a function `rollSpiritOrigin(rarity, pool)` which when number of stars is determined (5*/4*/3*), the pool splits and is grouped by rarity. From there, **do another RNG using the range of the split pool to pick the card**.
 
 If you know something that I dont, or if there's something wrong with what I did, please feel free to tell me by giving an issue! You can also send me recommendations to make fgoSaltFlush more exciting or your thoughts about this nonsense stuff.
@@ -88,7 +94,7 @@ You might encounter some bugs because I haven't slept yet. Here are the ones I n
     - iPhone X (375x812)
     - iPad (768x1024)
 2. **Black Glitch**. The screen flashes black, must be due to the black background color of `body`, when page changes.
-3. **Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.
+~~3. **Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  
 4. **Blank Images**. Because I am too sleepy, I incorrectly typed some of the names of the servants and craft essences. The `url` of background-images of `divs` or `src` attributes of `imgs` rely on names so nothing will appear if the name doesn't match any of the filenames. **If you ever encounter this, please let me know by submitting an issue about it**. *Tell me who is that servant that doesn't want to be summoned.*
 5. **Lag in loading images**. May experience a lag in loading of images, especially when connection is slow. You'll have no lag problem if fgoSaltFlush is locally stored in your device.
 6. **System will go crazy if you leave the window while summon is on going**. Animations rely on `setTimeout` and `setInterval`. A card won't flip if you're currently not on the page, so the system will go crazy because the time's done but the card isn't done flipping.
@@ -108,5 +114,9 @@ So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do
 7. Once summoning is close enough to original, I'll add panels for how much $$$ you'll spend, total rolls, and maybe I'll study probabilty to **equip fgoSaltFlush with some predicting ability**. *I wanna make this nonsense useful somdeday.*
 9. **Improve loading of images** by lazy loading.
 8. Host **data on firebase** and use its real time feature.
+
+## Updates
+- Fixed some broken images.
+- Made summon process more accurate than before.
 
 ### May fgoSaltFlush flush your salt, give you peace and spark your rolls
