@@ -371,7 +371,6 @@ function summonSpiritron(banner, noOfRolls) {
         var guaranty = false;
         if(position == i) { 
             guaranty = true;
-            console.log("Guaranteed:");
         }
 
         typeAndRarity[i] = rollCard(guaranty);
@@ -396,7 +395,7 @@ function summonSpiritron(banner, noOfRolls) {
 function rollCard(guaranty) {
     // determine first the type of card
     // [servant] = 44%, [ce] = 56%
-    var typeNo = Math.floor(Math.random() * 100) + 1;
+    /*var typeNo = Math.floor(Math.random() * 100) + 1;
 
     var cardType = ""; var rarity = 0;
     if(typeNo > 0 && typeNo < 45) { // servant
@@ -435,25 +434,98 @@ function rollCard(guaranty) {
         }
 
         console.log(cardType + " : " + rarity);
-    }
+    }*/
 
+    var cardType = ""; var rarity = 0;
+    var rng = Math.random();
+    console.log("RNG: " + rng);
+
+    if(guaranty) {
+        console.log("Guaranteed");
+        console.log();
+
+        if((rng -= 0.01) < 0) {
+            cardType = "Servant";
+            rarity = 5;
+
+            console.log(rng);
+            console.log("Servant SRR");
+        } else if((rng -= 0.03) < 0) {
+            cardType = "Servant";
+            rarity = 4;
+
+            console.log(rng);
+            console.log("Servant SR"); 
+        } else if((rng -= 0.04) < 0) {
+            cardType = "CE";
+            rarity = 5;
+
+            console.log(rng);
+            console.log("CE SRR");
+        } else {
+            cardType = "CE";
+            rarity = 4;
+
+            console.log(rng);
+            console.log("CE SR");
+        }
+    } else {
+        if((rng -= 0.01) < 0) {
+            cardType = "Servant";
+            rarity = 5;
+
+            console.log(rng);
+            console.log("Servant SRR");
+        } else if((rng -= 0.03) < 0) {
+            cardType = "Servant";
+            rarity = 4;
+
+            console.log(rng);
+            console.log("Servant SR");
+        } else if((rng -= 0.40) < 0) {
+            cardType = "Servant";
+            rarity = 3;
+
+            console.log(rng);
+            console.log("Servant R");
+        } else if((rng -= 0.04) < 0) {
+            cardType = "CE";
+            rarity = 5;
+
+            console.log(rng);
+            console.log("CE SRR");
+        } else if((rng -= 0.12) < 0) {
+            cardType = "CE";
+            rarity = 4;
+
+            console.log(rng);
+            console.log("CE SR");
+        } else {
+            cardType = "CE";
+            rarity = 3;
+
+            console.log(rng);
+            console.log("CE R");
+        }
+    }
+    
     return {"type": cardType, "rarity": rarity};
 }
 
 function rollSpiritOrigin(rarity, pool) {
     var spiritOrigin = "";
 
-    if(rarity == 1) { // 5 star
+    if(rarity == 5) { // 5 star
         var fiveStar = splitRarity(pool, 5);
         var originNo = fetchOrigin(fiveStar);
 
         spiritOrigin = fiveStar[originNo];
-    } else if((rarity > 1) && (rarity <= 4)) { // 4 star
+    } else if(rarity == 4) { // 4 star
         var fourStar = splitRarity(pool, 4);
         var originNo = fetchOrigin(fourStar);
 
         spiritOrigin = fourStar[originNo];
-    } else if(rarity > 4) { // 3 star
+    } else if(rarity == 3) { // 3 star
         var threeStar = splitRarity(pool, 3);
         var originNo = fetchOrigin(threeStar);
 
@@ -466,17 +538,17 @@ function rollSpiritOrigin(rarity, pool) {
 function rollCraftEssence(rarity, pool) {
     var craftEssence = "";
 
-    if(rarity >= 1 && rarity <= 4) { // 5 star
+    if(rarity == 5) { // 5 star
         var fiveStar = splitRarity(pool, 5);
         var originNo = fetchOrigin(fiveStar);
 
         craftEssence = fiveStar[originNo];
-    } else if(rarity > 4 && rarity <= 16) { // 4 star
+    } else if(rarity == 4) { // 4 star
         var fourStar = splitRarity(pool, 4);
         var originNo = fetchOrigin(fourStar);
 
         craftEssence = fourStar[originNo];
-    } else if(rarity > 16) { // 3 star
+    } else if(rarity == 3) { // 3 star
         var threeStar = splitRarity(pool, 3);
         var originNo = fetchOrigin(threeStar);
 
