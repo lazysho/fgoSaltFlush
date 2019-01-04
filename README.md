@@ -33,8 +33,6 @@ Since fgosSaltFlush is still on alpha stage, and *I did this for fun*, I only us
 
 Of course, I used the rates of summoning that F/GO provided. From what I understood, you have a **44% chance of summoning a servant** and **56% chance for craft essence**. I didn't include the **drop rates of each servant** in the calculation because ~~I'm not really sure (???) how and where to include those rates in the program I made. I'll just figure that out later.~~
 
-I think I have figured out how to add drop rates.
-
 ### Process
 Now, here's how fgoSaltFlush plans to flush your salt.
 1. First thing I did when I got the banner is **split the pool** into two types, **servant** and **craft essence**.
@@ -95,16 +93,20 @@ You might encounter some bugs because I haven't slept yet. Here are the ones I n
     - iPhone 6/7/8 Plus (414x736)
     - iPhone X (375x812)
     - iPad (768x1024)
-2. **Black Glitch**. The screen flashes black, must be due to the black background color of `body`, when page changes.
-~~3. **Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  
+2. **Black Glitch**. The screen flashes black, must be due to the black background color of `body`, when page changes.  
+
+~~3. **Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  **Not 100% accurate but its better than before**. There's still a problem though.
+
 4. **Blank Images**. Because I am too sleepy, I incorrectly typed some of the names of the servants and craft essences. The `url` of background-images of `divs` or `src` attributes of `imgs` rely on names so nothing will appear if the name doesn't match any of the filenames. **If you ever encounter this, please let me know by submitting an issue about it**. *Tell me who is that servant that doesn't want to be summoned.*
+
 5. **Lag in loading images**. May experience a lag in loading of images, especially when connection is slow. You'll have no lag problem if fgoSaltFlush is locally stored in your device.
+
 6. **System will go crazy if you leave the window while summon is on going**. Animations rely on `setTimeout` and `setInterval`. A card won't flip if you're currently not on the page, so the system will go crazy because the time's done but the card isn't done flipping.
   
 ## Upcoming Features
 So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do all of these maybe when I'm so passionate like I am right now. **I was able to complete this because of too much salt btw**, I've had enough and I needed an outlet.
 
-1. Include servants' specific **drop rates** in calculation to improve summoning system and make it more accurate.
+1. ~~Include servants' specific **drop rates** in calculation to improve summoning system and make it more accurate.~~  
 2. **Allow f2p's to customize banner**.
     - Select up to 5 servants that will have **increase in drop rates**.
     - **Exclude** cards from pool.
@@ -113,12 +115,12 @@ So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do
 4. Will try to mimic Chaldea's summoning system as much as possible, so **I'll try the rotating circle animation**. If I can't I'll just do something simillar just to hint f2p's what they got. ~~I also want to experience rainbow please~~.
 5. **Add sound fx to make summoning less dull.**
 6. Make system interactive by making **Romani and Da Vinci speak to you** as you roll. ~~I dunno how will I do this.~~
-7. Once summoning is close enough to original, I'll add panels for how much $$$ you'll spend, total rolls, and maybe I'll study probabilty to **equip fgoSaltFlush with some predicting ability**. *I wanna make this nonsense useful somdeday.*
+7. ~~Once summoning is close enough to original, I'll add panels for how much $$$ you'll spend, total rolls, and maybe I'll study probabilty to **equip fgoSaltFlush with some predicting ability**. *I wanna make this nonsense useful somdeday.*~~
 9. **Improve loading of images** by lazy loading.
 8. Host **data on firebase** and use its real time feature.
 
 ## Updates
 - Fixed some broken images.
-- Made summon process more accurate than before.
+- Made summon process more accurate than before but still not 100% accurate.
 
 ### May fgoSaltFlush flush your salt, give you peace and spark your rolls
