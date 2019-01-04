@@ -361,7 +361,8 @@ function summonSpiritron(banner, noOfRolls) {
     var position = 99;
     if(noOfRolls > 1) {
         position = Math.floor(Math.random() * 9);
-        console.log("Guaranteed Position: " + position);
+        console.log("Guaranteed: Summon #" + (position + 1) );
+        console.log(" ");
     }
 
     // determine card type and rarity
@@ -372,6 +373,7 @@ function summonSpiritron(banner, noOfRolls) {
             guaranty = true;
         }
 
+        console.log("Summon #" + (i + 1));
         typeAndRarity[i] = rollCard(guaranty);
     }
 
@@ -385,126 +387,168 @@ function summonSpiritron(banner, noOfRolls) {
         }
     }
 
-    console.log(spiritOrigins);
+    console.log("Summon Details");
+    for(var i = 0; i < noOfRolls; i++) {
+        console.log((i + 1) + " : " + spiritOrigins[i].name + ", " + spiritOrigins[i].rarity + "*"
+            + " " + spiritOrigins[i].type);
+    }
+    console.log(" ");
 
     // display result
     displaySummon(spiritOrigins);
+
+    console.log("Welcome to fgoSaltFlush! I made this for myself because " +
+        "I like rolling, I'm just so unlucky irl that fake rolls desalinate me." +
+        " Anyway, I hope that's the case with you too! Hope you had fun!");
+    console.log(" ");
+    console.log("Please note that fgoSaltFlush is not accurate. I tried to make it as close as possible, " +
+        "but I think it'll never be 100% similar to F/GO.");
+    console.log("I just rely on Math.random().");
 }
 
 function rollCard(guaranty) {
-    // determine first the type of card
-    // [servant] = 44%, [ce] = 56%
-    /*var typeNo = Math.floor(Math.random() * 100) + 1;
-
-    var cardType = ""; var rarity = 0;
-    if(typeNo > 0 && typeNo < 45) { // servant
-        cardType = "Servant";
-
-        // gives of gold servant if guaranteed
-        var min = 0, max = 0;
-        if(guaranty) {
-            min = 1;
-            max = 4;
-
-            rarity = Math.floor((Math.random() * max) + min);
-        } else {
-            min = 1;
-            max = 44;
-
-            rarity = Math.floor((Math.random() * max) + min);
-        }
-
-        console.log(cardType + " : " + rarity);
-    } else { // ce
-        cardType = "CE";
-
-        // gives of gold servant if guaranteed
-        var min = 0, max = 0;
-        if(guaranty) {
-            min = 1;
-            max = 16;
-
-            rarity = Math.floor((Math.random() * max) + min);
-        } else {
-            min = 1;
-            max = 56;
-
-            rarity = Math.floor((Math.random() * max) + min);
-        }
-
-        console.log(cardType + " : " + rarity);
-    }*/
-
     var cardType = ""; var rarity = 0;
     var rng = Math.random();
-    console.log("RNG: " + rng);
-
+    console.log("Random Number: " + rng);
+    
+    var rngDec = rng;
     if(guaranty) {
-        console.log("Guaranteed");
-        console.log();
-
-        if((rng -= 0.01) < 0) {
+        if((rngDec -= 0.01) < 0) {
             cardType = "Servant";
             rarity = 5;
 
-            console.log(rng);
-            console.log("Servant SRR");
-        } else if((rng -= 0.03) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: Servant SSR");
+            console.log(" ");
+        } else if((rngDec -= 0.03) < 0) {
             cardType = "Servant";
             rarity = 4;
 
-            console.log(rng);
-            console.log("Servant SR"); 
-        } else if((rng -= 0.04) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: Servant SR");
+            console.log(" "); 
+        } else if((rngDec -= 0.04) < 0) {
             cardType = "CE";
             rarity = 5;
 
-            console.log(rng);
-            console.log("CE SRR");
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.04 = " + (rng -= 0.04));
+            console.log("CE SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: CE SSR");
+            console.log(" ");
         } else {
             cardType = "CE";
             rarity = 4;
 
-            console.log(rng);
-            console.log("CE SR");
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.04 = " + (rng -= 0.04));
+            console.log("CE SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("[Since Servant/CE R are excluded in guaranteed, " +
+                        "I added the 80% to CE SR giving it 92% chance of dropping.]");
+            console.log(rng + " - 0.92 = " + (rng -= 0.92));
+            console.log("CE SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: CE SR");
+            console.log(" ");
         }
     } else {
-        if((rng -= 0.01) < 0) {
+        if((rngDec -= 0.01) < 0) {
             cardType = "Servant";
             rarity = 5;
 
-            console.log(rng);
-            console.log("Servant SRR");
-        } else if((rng -= 0.03) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: Servant SSR");
+            console.log(" ");
+        } else if((rngDec -= 0.03) < 0) {
             cardType = "Servant";
             rarity = 4;
 
-            console.log(rng);
-            console.log("Servant SR");
-        } else if((rng -= 0.40) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: Servant SR");
+            console.log(" ");
+        } else if((rngDec -= 0.40) < 0) {
             cardType = "Servant";
             rarity = 3;
 
-            console.log(rng);
-            console.log("Servant R");
-        } else if((rng -= 0.04) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.40 = " + (rng -= 0.40));
+            console.log("Servant R?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: Servant R");
+            console.log(" ");
+        } else if((rngDec -= 0.04) < 0) {
             cardType = "CE";
             rarity = 5;
 
-            console.log(rng);
-            console.log("CE SRR");
-        } else if((rng -= 0.12) < 0) {
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.40 = " + (rng -= 0.40));
+            console.log("Servant R?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.04 = " + (rng -= 0.04));
+            console.log("CE SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: CE SSR");
+            console.log(" ");
+        } else if((rngDec -= 0.12) < 0) {
             cardType = "CE";
             rarity = 4;
 
-            console.log(rng);
-            console.log("CE SR");
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.40 = " + (rng -= 0.40));
+            console.log("Servant R?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.04 = " + (rng -= 0.04));
+            console.log("CE SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.12 = " + (rng -= 0.12));
+            console.log("CE SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: CE SR");
+            console.log(" ");
         } else {
             cardType = "CE";
             rarity = 3;
 
-            console.log(rng);
-            console.log("CE R");
+            console.log("--Process--");
+            console.log(rng + " - 0.01 = " + (rng -= 0.01));
+            console.log("Servant SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.03 = " + (rng -= 0.03));
+            console.log("Servant SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.40 = " + (rng -= 0.40));
+            console.log("Servant R?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.04 = " + (rng -= 0.04));
+            console.log("CE SSR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.12 = " + (rng -= 0.12));
+            console.log("CE SR?? " + rng + " < 0 = " + (rng < 0));
+            console.log(rng + " - 0.40 = " + (rng -= 0.40));
+            console.log("CE R?? " + rng + " < 0 = " + (rng < 0));
+            console.log("Summon Result: CE R");
+            console.log(" ");
         }
     }
     
@@ -600,8 +644,6 @@ function portraitUrl(name) {
     filename = filename.split('/').join('_');
     filename = filename.split("'").join('');
     filename = filename.toLowerCase();
-
-    console.log(filename);
     return filename;
 }
 
