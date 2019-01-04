@@ -48,7 +48,7 @@ Now, here's how fgoSaltFlush plans to flush your salt.
    | 4 Star | 2 : -0.03 | 5 : -0.12     |
    | 3 Star | 3 : -0.40 | 6 : -0.40     |
    
-   ### Special thanks to that person in reddit who helped me!
+   #### Special thanks to that person in reddit who helped me!
     
 4. The **entire process of step three is in a loop** by the way, which calls `rollCard(guaranty)` for the number of rolls you chose. When the counter reaches the position of the guranteed card, the variable `guaranty`,  a boolean, is set to true. ~~When picking the rarity, this boolean is used to **shorten the range of the pool to 1-4 for servants and 1-16 for ce**.~~ Then conditions 3 and 6 from tables above will be excluded, making CE SR's rate 92%.
 
