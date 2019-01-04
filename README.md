@@ -38,7 +38,7 @@ Now, here's how fgoSaltFlush plans to flush your salt.
 1. First thing I did when I got the banner is **split the pool** into two types, **servant** and **craft essence**.
 2. We all know that if you roll for 10x, you'll have a guaranteed 4* above card. Before finding out what's the card type and rarity, **determine first the position of the guaranteed card** if rolling for 10x. This is where the system starts to rely on **RNG** or **random number generation**. 0-9 will be the range, the result will be the place of the guaranteed card.
 
-~~3. **RNG again for finding out the card's type and rarity**. I decided to **get the type first**, so the range is from 1-100. If the number generated is from **1-44** (44%), the card is a servant otherwise **45-100** (56%) its a craft essence. Do **another RNG for rarity** and see the table below to find out the equivalent rarity of numbers.~~
+3. ~~**RNG again for finding out the card's type and rarity**. I decided to **get the type first**, so the range is from 1-100. If the number generated is from **1-44** (44%), the card is a servant otherwise **45-100** (56%) its a craft essence. Do **another RNG for rarity** and see the table below to find out the equivalent rarity of numbers.~~
 
 3. Instead of doing the RNG for type and rarity separately, I did it in one go. I also used float, then **decrement at each if condition until it reaches below zero**. On which condition it falls determine's the type and rarity. Below is the corresponding rarity per condition, the amount it decrements, then falls under it **if result is < 0**. 
 
@@ -95,9 +95,9 @@ You might encounter some bugs because I haven't slept yet. Here are the ones I n
     - iPad (768x1024)
 2. **Black Glitch**. The screen flashes black, must be due to the black background color of `body`, when page changes.  
 
-~~3. **Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  **Not 100% accurate but its better than before**. There's still a problem though.
+3. ~~**Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  **Not 100% accurate but it's better than before**. There's still a problem though...
 
-4. **Blank Images**. Because I am too sleepy, I incorrectly typed some of the names of the servants and craft essences. The `url` of background-images of `divs` or `src` attributes of `imgs` rely on names so nothing will appear if the name doesn't match any of the filenames. **If you ever encounter this, please let me know by submitting an issue about it**. *Tell me who is that servant that doesn't want to be summoned.*
+4. **Blank Images**. Because I am too sleepy, I incorrectly typed some of the names of the servants and craft essences. The `url` of background-images of `div` or `src` attributes of `img` rely on names so nothing will appear if the name doesn't match any of the filenames. **If you ever encounter this, please let me know by submitting an issue about it**.
 
 5. **Lag in loading images**. May experience a lag in loading of images, especially when connection is slow. You'll have no lag problem if fgoSaltFlush is locally stored in your device.
 
@@ -121,6 +121,6 @@ So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do
 
 ## Updates
 - Fixed some broken images.
-- Made summon process more accurate than before but still not 100% accurate.
+- Made summon process more accurate than before but **still not 100% accurate**.
 
 ### May fgoSaltFlush flush your salt, give you peace and spark your rolls
