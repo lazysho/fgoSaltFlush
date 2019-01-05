@@ -116,7 +116,7 @@ So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do
 ## Updates
 - Made summon process better than before but **still not 100% accurate**.
 - Summon process printed on console. Just right click and inspect or `ctrl+shift+i`.
-- Adjust animation for mobile devices.
+- ~~Adjust animation for mobile devices.~~ Timing still off.
 - If rarity is above R, there's **25%** chance of spark animation.
 
 ### May fgoSaltFlush flush your salt, give you peace and spark your rolls
