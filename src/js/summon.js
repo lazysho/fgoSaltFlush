@@ -674,7 +674,7 @@ function flipClassCard(type, rarity, cclass) {
        }
    } else {
        if(rarity > 3) {
-           spark -=  100; // will spark if 25 and below
+           spark -=  25; // will spark if 25 and below
            if(spark < 0) {
                classCard = classCard.concat("/silver/");
                classCard = classCard.concat(cclass.toLowerCase());
