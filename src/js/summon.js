@@ -674,7 +674,7 @@ function flipClassCard(type, rarity, cclass) {
        }
    } else {
        if(rarity > 3) {
-           spark -=  25; // will spark if 25 and below
+           spark -=  100; // will spark if 25 and below
            if(spark < 0) {
                classCard = classCard.concat("/silver/");
                classCard = classCard.concat(cclass.toLowerCase());
@@ -692,7 +692,7 @@ function flipClassCard(type, rarity, cclass) {
                    $('.servant-card').removeClass('flipInY');
                    $('.servant-card').addClass('flash infinite');
                    $('.servant-card').css('background-image', classCard);
-                   $('.servant-card').removeClass('infinite');
+                   $('.servant-card').removeClass('flash infinite');
                })
                
                $('.servant-card').delay(1250).fadeOut(200);
