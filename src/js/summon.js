@@ -1023,6 +1023,7 @@ function resizeFrames() {
 
 // ROOT
 $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
     onPageLoad();
     setTimeout(autoOverflow, 2000);
 });
