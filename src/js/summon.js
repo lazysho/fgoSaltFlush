@@ -1,7 +1,8 @@
 // GLOBALS
-var summonfxInterval, summaryDisplayInterval;
+var summonfxInterval, summaryDisplayTimeout;
 var spiritOriginList = [];
 var ccindex = 0;
+var skipSummonfx = false;
 
 // FUCTIONS
 function onPageLoad() {
@@ -626,12 +627,12 @@ function fetchOrigin(pool) {
 function displaySummon(spiritOrigins) {
     spiritOriginList = spiritOrigins;
     setTimeout(summonfx, 1500);
-    summonfxInterval = setInterval(summonfx, 7750);
+    summonfxInterval = setInterval(summonfx, 7900);
 
     if(spiritOriginList.length > 1) {
-        setTimeout(displaySummary, 80000);
+        summaryDisplayTimeout = setTimeout(displaySummary, 80000);
     } else {
-        setTimeout(displaySummary, 8250);
+        summaryDisplayTimeout = setTimeout(displaySummary, 8250);
     }
     
 }
@@ -661,6 +662,7 @@ function summonfx() {
 
 function flipClassCard(type, rarity, cclass) {
    var classCard = "../assets/images/frames";
+   var spark = Math.floor(Math.random() * 100) + 1;
 
    if(type == "CE") {
        if(rarity > 3) {
@@ -672,7 +674,32 @@ function flipClassCard(type, rarity, cclass) {
        }
    } else {
        if(rarity > 3) {
-           classCard = classCard.concat("/gold/");
+           spark -=  25; // will spark if 25 and below
+           if(spark < 0) {
+               classCard = classCard.concat("/silver/");
+               classCard = classCard.concat(cclass.toLowerCase());
+               classCard = classCard.concat(".png")
+               classCard = "url('" + classCard + "')";
+
+               $('.servant-card').css('background-image', classCard);
+               $('.servant-card').addClass('flipInY');
+               $('.servant-card').fadeIn(750, function() {
+                   classCard = "../assets/images/frames";
+                   classCard = classCard.concat("/gold/");
+                   classCard = classCard.concat(cclass.toLowerCase());
+                   classCard = classCard.concat(".png")
+                   classCard = "url('" + classCard + "')";
+                   $('.servant-card').removeClass('flipInY');
+                   $('.servant-card').addClass('flash infinite');
+                   $('.servant-card').css('background-image', classCard);
+                   $('.servant-card').removeClass('infinite');
+               })
+               
+               $('.servant-card').delay(1250).fadeOut(200);
+               return;
+            } else {
+                classCard = classCard.concat("/gold/");
+            }
        } else {
            classCard = classCard.concat("/silver/");
        }
@@ -707,8 +734,8 @@ function setImage(type, cclass, name) {
     image = "url('" + image + "')";
 
     $('.servant-portrait').css('background-image', image);
-    $('.servant-portrait').delay(2250).fadeIn(150);
-    $('.servant-portrait').delay(2500).fadeOut(500);
+    $('.servant-portrait').delay(2500).fadeIn(300);
+    $('.servant-portrait').delay(2750).fadeOut(500);
 }
 
 function setFrame(type, rarity) {
@@ -742,22 +769,22 @@ function setFrame(type, rarity) {
     }
 
     $('.servant-frame').css('background-image', frame);
-    $('.servant-frame').delay(2250).fadeIn(150);
-    $('.servant-frame').delay(2500).fadeOut(500);
+    $('.servant-frame').delay(2500).fadeIn(300);
+    $('.servant-frame').delay(2750).fadeOut(500);
 }
 
 function setClassAndName(type, rarity, cclass, name) {
     if(type == "CE") {
         if(name.length <= 20) {
             $('.class-name').text(name);
-            $('.class-name').delay(2250).fadeIn(150);
-            $('.class-name').delay(2500).fadeOut(500);
+            $('.class-name').delay(2500).fadeIn(300);
+            $('.class-name').delay(2750).fadeOut(500);
         } else {
             $('.servant-name').text(name);
             $('.servant-name').css('font-size', '2vh')
             $('.servant-name').css('margin-top', '-8vh')
-            $('.servant-name').delay(2250).fadeIn(150);
-            $('.servant-name').delay(2500).fadeOut(500);
+            $('.servant-name').delay(2500).fadeIn(300);
+            $('.servant-name').delay(2750).fadeOut(500);
         }
     } else {
         var classIcon = '../assets/images/frames/class/';
@@ -772,19 +799,19 @@ function setClassAndName(type, rarity, cclass, name) {
 
         // change class icon
         $('.servant-class').css('background-image', classIcon);
-        $('.servant-class').delay(2250).fadeIn(150);
-        $('.servant-class').delay(2500).fadeOut(500);
+        $('.servant-class').delay(2500).fadeIn(300);
+        $('.servant-class').delay(2750).fadeOut(500);
 
         // change class name
         $('.class-name').text(cclass);
-        $('.class-name').delay(2250).fadeIn(150);
-        $('.class-name').delay(2500).fadeOut(500);
+        $('.class-name').delay(2550).fadeIn(300);
+        $('.class-name').delay(2750).fadeOut(500);
 
         $('.servant-name').text(name);
         $('.servant-name').css('font-size', '1.8vh')
         $('.servant-name').css('margin-top', '-1.5vh')
-        $('.servant-name').delay(2250).fadeIn(150);
-        $('.servant-name').delay(2500).fadeOut(500);
+        $('.servant-name').delay(2500).fadeIn(300);
+        $('.servant-name').delay(2750).fadeOut(500);
     }
 }
 
@@ -796,6 +823,23 @@ function cardFadeOut(noOfRolls) {
         ccindex = 0;
         clearInterval(summonfxInterval);
     }
+}
+
+function skipSummon() {
+    $('#skipButton').prop('disabled', true);
+
+    $('.servant-card').css('display', 'none');
+    $('.servant-portrait').delay(2250).css('display', 'none');
+    $('.servant-frame').delay(2250).css('display', 'none');
+    $('.class-name').delay(2250).css('display', 'none');
+    $('.servant-name').delay(2250).css('display', 'none');
+
+    setTimeout(function() {
+        clearInterval(summonfxInterval);
+        clearTimeout(summaryDisplayTimeout);
+        displaySummary();
+    }, 8000);
+    
 }
 
 function displaySummary() {
@@ -883,18 +927,12 @@ function displaySummary() {
 
     $('.summon-panel').css('overflow', 'auto');
 
-    /**
-    var yolo = "Yolo";
-    createElement('p', 'yoloButton', 'w-25 btn bg-secondary mx-auto text-white shadow-sm',
-        yolo, 'child', 'alertSpace');
-    $('#yoloButton').addClass('show');
-
-    var tenRolls = "10 Rolls";
-    createElement('p', 'tenRollsButton', 'w-25 btn bg-secondary mx-auto text-white shadow-sm',
-        tenRolls, 'child', 'alertSpace');
-    $('#tenRollsButton').addClass('show');
-    **/
-
+    createElement('p', 'rollAgain', 'w-50 btn animated slideInDown bg-danger mt-3 mx-auto text-white shadow-sm',
+        "Roll Again", 'child', 'alertSpace');
+    $('#rollAgain').click(function() {
+        location.reload();
+    });
+    $('#rollAgain').addClass('show');
     resizeFrames();
 }
 
