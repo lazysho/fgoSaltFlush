@@ -85,17 +85,11 @@ System adapts base on the size of screen. Used bootstrap for this and bunch of ~
 ## Issues
 You might encounter some bugs because I haven't slept yet. Here are the ones I noticed, but shouldn't affect your flushing that much. I'm stil a noob to responsive web design so please bear with me and my salt.
 
-1. **Result Summary**. I had a little problem with displaying the result thumbnails of the summon. The one I did with the card didn't work with the thumbnails, so I tried another way but the responsive function was affected. The thumbnails doesn't adapt to all screen sizes unlike the cards so I inserted a temporary fix for the following screen sizes. **Expect frames and thumbnails to not fit on certain device screen sizes.**
-    - Galaxy S5 (360x640)
-    - Pixel 2 (411x731)
-    - iPhone 5/SE (320x568)
-    - iPhone 6/7/8 (375x667)
-    - iPhone 6/7/8 Plus (414x736)
-    - iPhone X (375x812)
-    - iPad (768x1024)
+1. **Result Summary**. I had a little problem with displaying the result thumbnails of the summon. The one I did with the card didn't work with the thumbnails, so I tried another way but the responsive function was affected. The thumbnails doesn't adapt to all screen sizes unlike the cards. **Expect frames and thumbnails to not fit on certain device screen sizes.**
+
 2. **Black Glitch**. The screen flashes black, must be due to the black background color of `body`, when page changes.  
 
-3. ~~**Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  **Not 100% accurate but it's better than before**. There's still a problem though...
+3. ~~**Summon Accuracy**. I have already mentiod this above but I'll say it once more. The **calculation for summoning is not accurate** and **is a bit of loose right now since I noticed that its easy to get an SSR**, ~~which is good for your salt anyway~~. I dont mean easy as in you'll get SSRs in a row or every roll you make, just more frequent than the original salty summon?? But it still makes sense, at least for me.~~  **Not 100% accurate but it's better than before**. There's still a problem though... You can do a 10 roll without servant. Will add checking in the future.
 
 4. **Blank Images**. Because I am too sleepy, I incorrectly typed some of the names of the servants and craft essences. The `url` of background-images of `div` or `src` attributes of `img` rely on names so nothing will appear if the name doesn't match any of the filenames. **If you ever encounter this, please let me know by submitting an issue about it**.
 
@@ -120,7 +114,9 @@ So far these are my plans for fgoSaltFlush. I don't know when I'll be able to do
 8. Host **data on firebase** and use its real time feature.
 
 ## Updates
-- Fixed some broken images.
-- Made summon process more accurate than before but **still not 100% accurate**.
+- Made summon process better than before but **still not 100% accurate**.
+- Summon process printed on console. Just right click and inspect or `ctrl+shift+i`.
+- Adjust animation for mobile devices.
+- If rarity is above R, there's **25%** chance of spark animation.
 
 ### May fgoSaltFlush flush your salt, give you peace and spark your rolls
