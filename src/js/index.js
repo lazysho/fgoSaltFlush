@@ -12,6 +12,12 @@ function summon(noOfRolls) {
     // if no banner is selected, don't proceed
     if(banner=="none") {
         if(alertOut == false) {
+            // remove alert as a child of alertSpace
+            var alertSpace = document.getElementById('alertSpace');
+            while(alertSpace.firstChild) {
+                alertSpace.removeChild(alertSpace.firstChild)
+            }
+
             // to avoid multiple alerts
             alertOut = true;
 
@@ -23,7 +29,7 @@ function summon(noOfRolls) {
                 error, 'child', 'alertSpace');
             
             // show alert
-            $('#alert').addClass('show');
+            $('#alert').addClass('animated fadeInDown');
 
             // auto close
             $('#alert').fadeTo(1500, 250).slideUp(500, function () {
@@ -35,9 +41,7 @@ function summon(noOfRolls) {
                 while(alertSpace.firstChild) {
                     alertSpace.removeChild(alertSpace.firstChild)
                 }
-
-                console.log("Closing alert...")
-            });
+                });
         }
         return;
     }
@@ -114,8 +118,25 @@ function goToGithub() {
     window.location.href = "https://github.com/lazysho/fgoSaltFlush/blob/master/README.md";
 }
 
+function hideBannerInfos() {
+        // auto close
+        $('#bannerInfo').fadeTo(1000, 500).slideUp(1000, function () {
+            $('#bannerInfo').slideUp(500);
+            alertOut = false;
+
+            // remove alert as a child of alertSpace
+            var alertSpace = document.getElementById('alertSpace');
+            while(alertSpace.firstChild) {
+                alertSpace.removeChild(alertSpace.firstChild)
+            }
+
+            console.log("Closing alert...")
+        });
+}
+
 // ROOT
 $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
     randomBackground();
     setTimeout(autoOverflow, 2000);
     resizeBtnGroup();

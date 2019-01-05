@@ -692,7 +692,7 @@ function flipClassCard(type, rarity, cclass) {
                    $('.servant-card').removeClass('flipInY');
                    $('.servant-card').addClass('flash infinite');
                    $('.servant-card').css('background-image', classCard);
-                   $('.servant-card').removeClass('flash infinite');
+                   $('.servant-card').removeClass('infinite');
                })
                
                $('.servant-card').delay(1250).fadeOut(200);
@@ -709,6 +709,7 @@ function flipClassCard(type, rarity, cclass) {
        classCard = "url('" + classCard + "')";
    }
 
+   $('.servant-card').removeClass('flash');
    $('.servant-card').css('background-image', classCard);
    $('.servant-card').addClass('flipInY');
    $('.servant-card').fadeIn(250);
